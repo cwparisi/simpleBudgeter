@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Signin Template for Bootstrap</title>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+              <div class="navbar-header" >
+                  <a class="navbar-brand" href="#">Budgeter</a>
+              </div>
+        </div>
+      </nav>
+
+      <div style="width: 390px; padding-bottom: 30px; margin: 0 auto; background-color: white; margin-top: 100px; border-radius: 10px">
+      	<%= form_tag '/login', class: 'form-signin', style: 'width: 330px; margin: 0 auto; padding: 15px' do %>
+          <% if flash[:error] %>
+            <div class="alert alert-danger" style="margin-top:10px"><%= flash[:error] %></div>
+          <% end %>
+          <h2 class="form-signin-heading">Sign in</h2><br>
+          <label for="username" class="sr-only">Username</label>
+          <%= text_field_tag 'userName', nil, class: "form-control", placeholder: "Username" %>
+          <label for="inputPassword" class="sr-only">Password</label><br>
+          <%= password_field_tag 'password', nil, class: "form-control", placeholder: "Password" %>
+		<br>
+          <button class="btn btn-lg btn-block" style="background-color: #388E3C; color: #fff" type="submit">Sign in</button>
+        <% end %>
+      </div>
+
+    </div> <!-- /container -->
+  </body>
+</html>

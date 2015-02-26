@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../favicon.ico">
+
+        <title>Dashboard Template for Bootstrap</title>
+
+    </head>
+
+    <body>
+
+    <div id="wrapper">
+
+    <%= render "layouts/navigation" %>
+
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="row" style="border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                    <div class="col-sm-5">
+                        <h2 class="" style="color: #616161">Transactions</h2>
+                    </div>
+                    <div class="col-sm-7">
+                        <h2 class="" style="color: #616161; float:right">
+                        <%= link_to '<i class="fa fa-chevron-left"></i>'.html_safe, {:controller => "transactions", :action => "index", :monthYear => $currentDatePrev.strftime('%m%Y') }, class: "leftBtnTransaction"%>
+                        <%= $currentDate.strftime('%B %Y') %>
+                        <%= link_to '<i class="fa fa-chevron-right"></i>'.html_safe, {:controller => "transactions", :action => "index", :monthYear => $currentDateNext.strftime('%m%Y') }, class: "rightBtnTransaction"%>
+                        <h3>
+                    </div>
+                </div>
+                
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <!--<th>ID#</th>-->
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Amount</th>
+                            <th>Type</th>
+                            <th>Fund</th>
+                            <!--<th>User</th>-->
+                            <th>Description</th>
+                            <th>Edit/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @monthsTransactions.sort_by {|transaction| transaction.date}.each do |transaction| %>
+                            <tr>
+                                <!--<td><%= transaction.id %></td>-->
+                                <td><%= transaction.date.strftime("%m/%d/%Y") %></td>
+                                <td><%= transaction.location %></td>
+                                <td><%= number_to_currency(transaction.amount) %></td>
+                                <td><%= transaction.transactionType %></td>
+                                <td><%= transaction.fund.try(:name) %></td>
+                                <!--<td><%= transaction.user.try(:userName) %></td>-->
+                                <td><%= transaction.description %></td>
+                                <td>
+                                    <a href="/transactions/<%=transaction.id%>/edit"><i class="fa fa-pencil fa-fw" style="color: #388E3C"></i></a>
+                                    <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/transactions/<%=transaction.id%>"><i class="fa fa-trash fa-fw" style="color: #616161"></i></a>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+
+                <% if @monthsTransactions.size == 0 %>
+                   <div class="alert alert-info" role="alert" style="font-size: 18px; color: #1B5E20; background-color: #A5D6A7; border-color: #66BB6A"> There are no transactions for this month. </div>
+                <% end %>
+                
+            </div> <!-- col-lg-12 -->
+          </div> <!-- row -->
+        </div> <!-- container-fluid -->
+    </div> <!-- page wrapper -->
+</div> <!-- wrapper -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../favicon.ico">
+
+        <title>Dashboard Template for Bootstrap</title>
+
+    </head>
+
+    <body>
+
+    <div id="wrapper">
+
+    <%= render "layouts/navigation" %>
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+                <h2 class="sub-header"><%=action_name.capitalize%> Transaction</h2>
+                    <div class="form-container" style="margin-left: 0px">
+                   
+                   <%= form_for @transaction do |t| %>
+                    <% if @transaction.errors.any? %>
+                        <div class="alert alert-danger" role="alert">
+                          <ul>
+                            <% @transaction.errors.full_messages.each do |msg| %>
+                              <li><%= msg %></li>
+                            <% end %>
+                          </ul>
+                        </div>
+                    <% end %>
+
+                    <div class="row formFieldRow">
+                        <div class="col-xs-3">
+                            <label for="transaction_date" class="fieldLabel">Transaction Date</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <%= t.date_field(:date, class: "form-control", style: 'width:200px') %>
+                        </div> 
+                    </div>
+
+                    <div class="row formFieldRow">
+                        <div class="col-xs-3">
+                            <label for="transaction_location" class="fieldLabel">Transaction Location</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <%= t.text_field(:location, class: "form-control", style: "width:200px", placeholder: "Enter location") %>
+                        </div> 
+                    </div>
+
+                    <div class="row formFieldRow">
+                        <div class="col-xs-3">
+                            <label for="transaction_amount" class="fieldLabel">Amount</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <%= t.text_field(:amount, class: "form-control", style: "width:200px", placeholder: "Enter amount") %>
+                        </div> 
+                    </div>
+
+                    <div class="row formFieldRow">
+                        <div class="col-xs-3">
+                            <label for="transaction_transactionType" class="fieldLabel">Type</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <%= t.text_field(:transactionType, class: "form-control", style: "width:200px", placeholder: "Enter payment type") %>
+                        </div> 
+                    </div>
+                   
+                    <div class="row formFieldRow">
+                        <div class="col-xs-3">
+                            <label for="transaction_fund" class="fieldLabel">Fund</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <%= t.collection_select(:fund_id, Fund.where(:user_id => session[:user_id]), :id, :name, {:prompt=>true}, {:class=>'form-control', :style=>'width: 200px'})%>
+                        </div> 
+                    </div>
+
+                    <div class="row formFieldRow">
+                        <div class="col-xs-3">
+                            <label for="description" class="fieldLabel">Description</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <%= t.text_field(:description, class: "form-control", style: "width:200px", placeholder: "Enter description") %>
+                        </div> 
+                    </div>
+
+                    <br>
+                 
+                    <% if action_name == "edit" %>
+                        <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff" value="Update Transaction">
+                    <% else %>
+                        <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff" value="Register Transaction">
+                    <% end %>
+                <% end %>
+            </div> <!-- form-container -->
+            </div> <!-- col-lg-12 -->
+          </div> <!-- row -->
+        </div> <!-- container-fluid -->
+    </div> <!-- page wrapper -->
+</div> <!-- wrapper -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </body>
+</html>

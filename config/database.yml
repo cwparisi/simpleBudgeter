@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: budgeter_development
+  pool: 5
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: budgeter_test
+  pool: 5

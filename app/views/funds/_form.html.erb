@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../favicon.ico">
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <%= render "layouts/navigation" %>
+
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2 class="sub-header"><%=action_name.capitalize%> Fund</h2>
+                            <div class="form-container">
+                           
+                               <%= form_for @fund do |f| %>
+                                <% if @fund.errors.any? %>
+                                    <div class="alert alert-danger" role="alert">
+                                      <ul>
+                                        <% @fund.errors.full_messages.each do |msg| %>
+                                          <li><%= msg %></li>
+                                        <% end %>
+                                      </ul>
+                                    </div>
+                                <% end %>
+
+                                <div class="row formFieldRow">
+                                    <div class="col-xs-3">
+                                        <label for="fund_name" class="fieldLabel">Fund Name</label>
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <input type="text" class="form-control" name="fund[name]" id="fund_name" value="<%=@fund.name%>" placeholder="Enter name" style="width: 200px">
+                                    </div> 
+                                </div>
+
+                                <div class="row formFieldRow">
+                                    <div class="col-xs-3">
+                                        <label for="fund_amount" class="fieldLabel">Fund Amount</label>
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <input type="text" class="form-control" name="fund[amount]" id="fund_amount" value="<%=@fund.amount%>" placeholder="Enter amount" style="width: 200px">
+                                    </div> 
+                                </div>
+
+                                <div class="row formFieldRow">
+                                    <!-- real color field that holds value from drop down selection -->
+                                    <input hidden type="text" value="<%= @fund.color %>" name="fund[color]" id="fund_color">
+                                    <div class="col-xs-3">
+                                        <label for="fund_color" class="fieldLabel">Color</label>
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <div class="btn-group">
+                                            <button id="iconBtn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                <span id="colorFieldHtml"> 
+                                                    <% if @fund.color and @fund.color != "" %>
+                                                        <i class="fa fa-square fa-fw" style="color: <%=@fund.color%>"></i> 
+                                                    <% else %>
+                                                        Select a color
+                                                    <% end %>
+                                                </span><span style="padding-left: 5px" class="fa fa-caret-down"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" style="height: auto; max-height: 200px; overflow-x: hidden;">
+
+                                              <% @colors.each do |color| %>
+                                                <li onclick="setColorValue('<%=color%>')"><a href="#"><i class="fa fa-square fa-fw" style="color: <%=color%>"></i></a></li>
+                                              <% end %>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <div class="row formFieldRow">
+                                <!-- real iconUrl field that holds value from drop down selection -->
+                        <input hidden type="text" value="<%= @fund.iconUrl %>" name="fund[iconUrl]" id="fund_iconUrl">
+                                <div class="col-xs-3">
+                                    <label for="fund_iconUrl" class="fieldLabel">Icon</label>
+                                </div>
+                                <div class="col-xs-9">
+                                    <div class="btn-group">
+                                        <button id="iconBtn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                            <span id="iconFieldHtml"> 
+                                                <% if @fund.iconUrl and @fund.iconUrl != "" %>
+                                                    <i class="fa fa-<%=@fund.iconUrl%> fa-fw"></i>
+                                                <% else %>
+                                                    Select an icon
+                                                <% end %>
+                                            </span>
+                                            <span style="padding-left: 5px" class="fa fa-caret-down"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" style="height: auto; max-height: 200px; overflow-x: hidden;">
+
+                                          <% @icons.each do |icon| %>
+                                            <li onclick="setIconValue('<%=icon%>')"><a href="#"><i class="fa fa-<%=icon%> fa-fw"></i> <%=icon%></a></li>
+                                          <% end %>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+
+                          <script>
+                          function setColorValue(value) {
+                            $("#fund_color").val(value);
+                            var color = "<i class='fa fa-square fa-fw' style='color: " + value + "'></i>"
+                            $("#colorFieldHtml").html(color);
+                          }
+                          </script>
+
+                          <script>
+                          function setIconValue(value) {
+                            $("#fund_iconUrl").val(value);
+                            var iconUrl = "<i class='fa fa-" + value + " fa-fw'></i>"
+                            $("#iconFieldHtml").html(iconUrl);
+                          }
+                          </script>
+                         
+                          <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff" value="<%= action_name.capitalize%> Fund">
+                        <% end %>
+                    </div> <!-- form-container -->
+                    </div> <!-- col-lg-12 -->
+                  </div> <!-- row -->
+                </div> <!-- container-fluid -->
+            </div> <!-- page wrapper -->
+</div> <!-- wrapper -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </body>
+</html>

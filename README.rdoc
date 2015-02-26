@@ -1,0 +1,14 @@
+== README
+
+This is a simple budgeting app created for the purpose of helping my wife and I to manage our expenses. After trying many mobile budgeting apps that did not meet my needs, I decided to create my own.
+
+
+* Ruby Version:				2.1.5
+
+* Rails Version:			4.2.0
+
+* jQuery Version:			1.11.2
+
+* Bootstrap Version:		3.3.2
+
+* Font Awesome:				4.3.0

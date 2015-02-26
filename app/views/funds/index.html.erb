@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../favicon.ico">
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <%= render "layouts/navigation" %>
+        
+            <div id="page-wrapper">
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="sub-header">Funds</h2>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <!--<th>ID#</th>-->
+                                    <th>Name</th>
+                                    <th>Icon</th>
+                                    <th>Color</th>
+                                    <th>Amount</th>
+                                    <th>Edit/Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <% @funds.each do |fund| %>
+                                <tr>
+                                    <!--<td><%= fund.id %></td>-->
+                                    <td><%= fund.name %></td>
+                                    <td><i class="fa fa-<%=fund.iconUrl%> fa-fw"></i></td>
+                                    <td><i class="fa fa-square fa-fw" style="color: <%=fund.color%>"></i></td>
+                                    <td><%= number_to_currency(fund.amount) %></td>
+                                    <td>
+                                        <a href="/funds/<%=fund.id%>/edit"><i class="fa fa-pencil fa-fw editBtn"></i></a>
+                                        <a data-confirm="Are you sure? Deleting a fund will delete all transactions belonging to the fund." rel="nofollow" data-method="delete" href="/funds/<%=fund.id%>"><i class="fa fa-trash fa-fw deleteBtn"></i></a>
+                                    </td>
+                                </tr>
+                            <% end %>
+                            </tbody>
+                        </table>
+                    </div> <!-- col-lg-12 -->
+                </div> <!-- row -->
+
+            
+                <% if @funds.size != 0 %>
+                    <div class="row">
+                        <div id="totalFundText">Total Fund Amount: <b style="color: #388E3C"><%= number_to_currency(@fundsTotal) %></b></div>
+                    </div><br>
+                <% end %>
+
+                <% if @funds.size == 0 %>
+                    <div class="alert alert-info noItemsAlert" role="alert" style="font-size: 18px; color: #1B5E20; background-color: #A5D6A7; border-color: #66BB6A"> Select 'Add Fund' in the navigation or click <u><a style="color: #616161" href="/funds/new">here</a></u> to create a new fund. </div>
+                <% end %>
+
+                <% if @percentage %>
+                <div class="progress" style="background-color: red; margin-bottom: 5px">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: <%=@percentage%>%; background-color: #BDBDBD; float: right"></div>
+                    <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: <%=100-@percentage%>%; background-color: #388E3C; float: right"><%= 100-@percentage %>%</div>
+                </div>
+                
+                <h5 style="text-align: center">
+                    <% if(@totalIncomes - @fundsTotal <= 0) %>
+                        <FONT COLOR="#F44336">
+                    <% else %>
+                        <FONT COLOR="#388E3C">
+                    <% end %>
+                    <%= number_to_currency(@totalIncomes - @fundsTotal) %>
+                        </FONT> / 
+                    <FONT COLOR="#757575"><%=number_to_currency(@totalIncomes)%></FONT>
+                </h5>
+                
+                <h5 style="text-align: center">Monthly income remaining</h5>
+                <br><br>
+                <% end %>
+            </div> <!-- container-fluid -->
+            </div> <!-- page wrapper -->
+        </div> <!-- wrapper -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </body>
+</html>

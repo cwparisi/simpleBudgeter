@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../favicon.ico">
+
+        <title>Dashboard Template for Bootstrap</title>
+
+    </head>
+
+    <body>
+
+    <div id="wrapper">
+
+    <%= render "layouts/navigation" %>
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+                <h2 class="sub-header"><%=action_name.capitalize%> User</h2>
+                    <div class="form-container" style="margin-left: 0px">
+                   <%= form_for @user do |u| %>
+                    <% if @user.errors.any? %>
+                        <div id="error_explanation">
+                          <h2>
+                            <%= pluralize(@user.errors.count, "error") %> prohibited
+                            this user from being saved:
+                          </h2>
+                          <ul>
+                            <% @user.errors.full_messages.each do |msg| %>
+                              <li><%= msg %></li>
+                            <% end %>
+                          </ul>
+                        </div>
+                    <% end %>
+
+                    <div class="row formFieldRow">
+                        <div class="col-xs-3">
+                            <label for="user_firstName" class="fieldLabel">First Name</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <%= u.text_field(:firstName, class: "form-control", style: "width:200px", placeholder: "Enter first name") %>
+                        </div> 
+                    </div>
+
+                    <div class="row formFieldRow">
+                        <div class="col-xs-3">
+                            <label for="user_lastName" class="fieldLabel">Last Name</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <%= u.text_field(:lastName, class: "form-control", style: 'width:200px', placeholder: "Enter last name") %>
+                        </div> 
+                    </div>
+
+                    <div class="row formFieldRow">
+                        <div class="col-xs-3">
+                            <label for="user_userName" class="fieldLabel">User Name</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <%= u.text_field(:userName, class: "form-control", style: 'width:200px', placeholder: "Enter username") %>
+                        </div> 
+                    </div>
+
+                    <div class="row formFieldRow">
+                        <div class="col-xs-3">
+                            <label for="user_password" class="fieldLabel">Password</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <%= u.password_field(:password, class: "form-control", style: 'width:200px', placeholder: "Enter password") %>
+                        </div> 
+                    </div>
+
+                    <br>
+                 
+                  <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff" value="<%= action_name.capitalize%> User">
+                <% end %>
+            </div> <!-- form-container -->
+            </div> <!-- col-lg-12 -->
+          </div> <!-- row -->
+        </div> <!-- container-fluid -->
+    </div> <!-- page wrapper -->
+</div> <!-- wrapper -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </body>
+</html>

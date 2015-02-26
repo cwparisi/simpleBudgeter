@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../favicon.ico">
+    </head>
+
+    <body>
+
+    <div id="wrapper">
+
+    <%= render "layouts/navigation" %>
+
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <h2 class="sub-header">Incomes</h2>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th>Frequency</th>
+                                <th>Weekly Hours</th>
+                                <th>Edit/Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <% @incomes.each do |income| %>
+                            <tr>
+                                <td><%= income.name %></td>
+                                <td><%= number_to_currency(income.amount) %></td>
+                                <td><%= income.frequency %></td>
+                                <td><%= income.weekly_hours %></td>
+                                <td>
+                                    <a href="/incomes/<%=income.id%>/edit"><i class="fa fa-pencil fa-fw" style="color: #388E3C"></i></a>
+                                    <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/incomes/<%=income.id%>"><i class="fa fa-trash fa-fw" style="color: #616161"></i></a>
+                                </td>
+                            </tr>
+                        <% end %>
+                        </tbody>
+                    </table>
+
+                </div> <!-- col-lg-12 -->
+            </div> <!-- row -->
+
+            <% if @totalIncomes == 0 %>
+                <div class="alert alert-info noItemsAlert" role="alert" style="font-size: 18px; color: #1B5E20; background-color: #A5D6A7; border-color: #66BB6A"> Add an income to better track your monthly spending. </div>
+            <% end %>
+
+            <% if @totalIncomes != 0 %>
+            <div class="row">
+                 <div style="margin-left: 15px; color: #616161; font-size: 18px">Total Monthly Income: <b style="color: #388E3C"><%= number_to_currency(@totalIncomes) %></b></div>
+            </div>
+            <% end %>
+
+        </div> <!-- container-fluid -->
+    </div> <!-- page wrapper -->
+</div> <!-- wrapper -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </body>
+</html>
