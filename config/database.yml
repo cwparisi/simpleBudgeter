@@ -9,3 +9,8 @@ test:
   encoding: unicode
   database: budgeter_test
   pool: 5
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: budgeter_production
