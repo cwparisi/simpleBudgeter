@@ -56,7 +56,7 @@ class OverviewController < ApplicationController
       handleDateSelection(params)
 
       @fundTransactions = Array.new
-      Transaction.where(:user_id => session[:user_id]).where("fund_id == ?", params[:fund_id]).where(date: ($firstOfMonth..$lastOfMonth)).find_in_batches do |transactionsByFund|
+      Transaction.where(:user_id => session[:user_id]).where(:fund_id == params[:fund_id]).where(date: ($firstOfMonth..$lastOfMonth)).find_in_batches do |transactionsByFund|
         @fundTransactions = transactionsByFund
       end
 
