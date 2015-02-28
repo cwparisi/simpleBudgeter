@@ -21,69 +21,72 @@
     <div id="page-wrapper" style="min-height: 100%">
 
         <div class="container-fluid">
-          <div class="row">
+            <div class="row">
 
-            <div class="col-lg-12">
+                <div class="col-lg-12">
 
-                <div class="row" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px">
-                    <div class="col-sm-6">
-                        <h2 class="" style="color: #616161">Overview</h2>
+                    <div class="row" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px">
+                        <div class="col-sm-4">
+                            <div class="sectionTitle">Overview</div>
+                        </div>
+                        <div class="col-sm-8">
+                            <h2 class="monthNav">
+                                <%= link_to '<i class="fa fa-chevron-left"></i>'.html_safe, {:controller => "overview", :action => "index", :monthYear => $currentDatePrev.strftime('%m%Y') }, class: "leftBtnTransaction", style: "float: left"%>
+                                <span style="text-align: center"><%= $currentDate.strftime('%B %Y') %></span>
+                                <%= link_to '<i class="fa fa-chevron-right"></i>'.html_safe, {:controller => "overview", :action => "index", :monthYear => $currentDateNext.strftime('%m%Y') }, class: "rightBtnTransaction", style: "float: right"%>
+                            </h2>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <h2 class="" style="color: #616161; float:right">
-                        <%= link_to '<i class="fa fa-chevron-left"></i>'.html_safe, {:controller => "overview", :action => "index", :monthYear => $currentDatePrev.strftime('%m%Y') }, class: "leftBtnTransaction"%>
-                        <%= $currentDate.strftime('%B %Y') %>
-                        <%= link_to '<i class="fa fa-chevron-right"></i>'.html_safe, {:controller => "overview", :action => "index", :monthYear => $currentDateNext.strftime('%m%Y') }, class: "rightBtnTransaction"%>
-                        </h2>
-                    </div>
-                </div>
+                </div> <!-- col-lg-12 -->
+            </div> <!-- row -->
 
-        </div> <!-- row -->
-                <div class="fundContainer">
-                <% @funds.each_with_index do |fund, i| %>
-                <% @totalsArray[i] %>
+            <div class="fundContainer">
+            <% @funds.each_with_index do |fund, i| %>
+            <% @totalsArray[i] %>
 
-                    <% if i%2 == 0 %> 
-                        <div class="row"> 
-                    <% end %>
-                       
-                    <div class="col-lg-6 col-md-6">
-                        <a href="/overview/fund?fund_id=<%=fund.id%>&amp;monthYear=<%=$currentDate.strftime('%m%Y')%>">
-                            <div class="panel" style="color: #fff; background-color: <%=fund.color%>">
-                                
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-4">
-                                            <i class="fa fa-fw fa-<%= fund.iconUrl %> fa-4x"></i>
-                                        </div>
-                                        <div class="col-xs-8">
-                                            <div class="panelAmount" style="text-align: right"><%= number_to_currency(fund.amount-@totalsArray[i]) %></div>
-                                        </div>
+                <% if i%2 == 0 %> 
+                    <div class="row"> 
+                <% end %>
+                   
+                <div class="col-lg-6 col-md-6">
+                    <a href="/overview/fund?fund_id=<%=fund.id%>&amp;monthYear=<%=$currentDate.strftime('%m%Y')%>">
+                        <div class="panel" style="color: #fff; background-color: <%=fund.color%>">
+                            
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <i class="fa fa-fw fa-<%= fund.iconUrl %> fa-4x"></i>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-xs-8">
-                                            <div style="font-size: 20px"><%= fund.name %></div>
-                                        </div>
-                                        <div class="col-xs-4" style="text-align: right">
-                                            / <%= number_to_currency(fund.amount) %>
-                                        </div>
+                                    <div class="col-xs-8">
+                                        <div class="panelAmount" style="text-align: right"><%= number_to_currency(fund.amount-@totalsArray[i]) %></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <div style="font-size: 20px"><%= fund.name %></div>
+                                    </div>
+                                    <div class="col-xs-4" style="text-align: right; font-size: 13px; padding-top: 7px">
+                                        / <%= number_to_currency(fund.amount) %>
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                    </div> 
+                        </div>
+                    </a>
+                </div> 
 
-                    <% if i%2 != 0 %> </div> <% end %>
 
-                    <% end %>
-                </div>
-                <!--Total Incomes: <%= number_to_currency(@totalIncomes) %>-->
-                <br><br>
-            </div> <!-- col-lg-12 -->
+                <% if i%2 != 0 %> </div> <% end %>
+
+                <% end %>
+            </div>
+
+            <!--Total Incomes: <%= number_to_currency(@totalIncomes) %>-->
+            <br><br>
 
             <% if @fundsTotal == 0 %>
                 <div class="alert alert-info" role="alert" style="font-size: 18px; color: #1B5E20; background-color: #A5D6A7; border-color: #66BB6A"> Add some funds from the fund section to get started! </div>
             <% else %>
+            
             <div class="progress" style="background-color: red; margin-bottom: 5px">
               <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: <%=@fundPercentage%>%; background-color: #BDBDBD; float: right">
               </div>
@@ -111,6 +114,8 @@
             Fund Percentage: <%= number_to_percentage(@fundPercentage) %>-->
 
             <br><br><br><br>
+
+            </div> <!-- col-lg-12 -->
 
         </div> <!-- container-fluid -->
     </div> <!-- page wrapper -->

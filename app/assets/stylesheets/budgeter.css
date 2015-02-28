@@ -47,6 +47,41 @@
 	color: #616161;
 }
 
+.sectionTitle {
+	color: #616161;
+	font-size: 30px;
+	margin-top: 15px;
+	font-weight:500;
+}
+
+.monthNav {
+	color: #616161;
+	min-width: 300px;
+	text-align: center;
+	float:right;
+}
+
+@media (max-width: 767px) {
+	.sectionTitle {
+		color: #616161;
+		font-size: 15px;
+		margin-top: 10px;
+		font-weight:500;
+	}
+
+	.monthNav {
+		float: none;
+		margin-top: 10px;
+		margin-bottom: 0px;
+	}
+}
+
+@media (min-width: 420px) and (max-width: 767px) {
+	.sectionTitle {
+		font-size: 20px;
+	}
+}
+
 /* Fund CSS */
 #totalFundText {
 	margin-left: 15px;

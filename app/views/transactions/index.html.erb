@@ -26,15 +26,15 @@
             <div class="col-lg-12">
 
                 <div class="row" style="border-bottom: 1px solid #eee; padding-bottom: 10px;">
-                    <div class="col-sm-5">
+                    <div class="col-sm-8">
                         <h2 class="" style="color: #616161">Transactions</h2>
                     </div>
-                    <div class="col-sm-7">
-                        <h2 class="" style="color: #616161; float:right">
-                        <%= link_to '<i class="fa fa-chevron-left"></i>'.html_safe, {:controller => "transactions", :action => "index", :monthYear => $currentDatePrev.strftime('%m%Y') }, class: "leftBtnTransaction"%>
-                        <%= $currentDate.strftime('%B %Y') %>
-                        <%= link_to '<i class="fa fa-chevron-right"></i>'.html_safe, {:controller => "transactions", :action => "index", :monthYear => $currentDateNext.strftime('%m%Y') }, class: "rightBtnTransaction"%>
-                        <h3>
+                    <div class="col-sm-4">
+                        <h2 class="" style="color: #616161; width: 300px; text-align: center; float:right">
+                        <%= link_to '<i class="fa fa-chevron-left"></i>'.html_safe, {:controller => "transactions", :action => "index", :monthYear => $currentDatePrev.strftime('%m%Y') }, class: "leftBtnTransaction", style: "float: left"%>
+                        <span style="text-align: center"><%= $currentDate.strftime('%B %Y') %></span>
+                        <%= link_to '<i class="fa fa-chevron-right"></i>'.html_safe, {:controller => "transactions", :action => "index", :monthYear => $currentDateNext.strftime('%m%Y') }, class: "rightBtnTransaction", style: "float: right"%>
+                        </h2>
                     </div>
                 </div>
                 

@@ -19,8 +19,8 @@ body {
 }
 
 .fundContainer {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -133,6 +133,16 @@ body {
         border-right: 4px solid #757575;
         background-color: #BDBDBD !important;
     }
+}
+
+@media(max-width:767px) {
+  .side-nav>li>a {
+    font-size: 18px;
+  }
+
+  .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-bottom: 2px solid #616161;
+  }
 }
 
 .side-nav>li>ul {
