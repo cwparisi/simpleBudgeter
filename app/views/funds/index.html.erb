@@ -58,11 +58,12 @@
                                     <p style="margin: 0px; font-size: 19px; color: #616161"><%= number_to_currency(fund.amount) %></p>
                                 </span>
                                 <span style="text-align: right; float: right">
-                                    <i class="fa fa-pencil fa-fw editBtn" style="font-size: 18px; margin-bottom: 14px"></i><br>
-                                    <i class="fa fa-trash fa-fw deleteBtn" style="font-size: 18px"></i>
+                                    <a href="/funds/<%=fund.id%>/edit"><i class="fa fa-pencil fa-fw editBtn" style="font-size: 18px; margin-bottom: 14px"></i></a><br>
+                                    <a data-confirm="Are you sure? Deleting a fund will delete all transactions belonging to the fund." rel="nofollow" data-method="delete" href="/funds/<%=fund.id%>"><i class="fa fa-trash fa-fw deleteBtn" style="font-size: 18px"></i></a>
                                 </span>
                             </div>
                             <% end %>
+
                         </div>
                         
                         
@@ -104,6 +105,8 @@
             </div> <!-- container-fluid -->
             </div> <!-- page wrapper -->
         </div> <!-- wrapper -->
+        <a href="/funds/new"><div class="floatingBtn">+</div></a>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   </body>
 </html>
