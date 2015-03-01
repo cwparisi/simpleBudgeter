@@ -117,3 +117,20 @@
 		display: none;
 	}
 }
+
+/* Transaction CSS */
+.transactionsMobile>div:first-child {
+	border-top: 1px solid gray;
+}
+
+@media (max-width: 767px) {
+	.transactionsDesktop {
+		display: none;
+	}
+}
+
+@media (min-width: 768px) {
+	.transactionsMobile {
+		display: none;
+	}
+}
