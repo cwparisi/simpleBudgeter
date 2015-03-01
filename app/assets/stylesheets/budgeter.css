@@ -134,3 +134,16 @@
 		display: none;
 	}
 }
+
+/* Incomes CSS */
+@media (max-width: 767px) {
+	.incomesDesktop {
+		display: none;
+	}
+}
+
+@media (min-width: 768px) {
+	.incomesMobile {
+		display: none;
+	}
+}
