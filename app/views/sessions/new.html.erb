@@ -22,8 +22,8 @@
         </div>
       </nav>
 
-      <div style="width: 390px; padding-bottom: 30px; margin: 0 auto; background-color: white; margin-top: 100px; border-radius: 10px">
-      	<%= form_tag '/login', class: 'form-signin', style: 'width: 330px; margin: 0 auto; padding: 15px' do %>
+      <div class="loginContainer">
+      	<%= form_tag '/login', class: 'form-signin loginForm' do %>
           <% if flash[:error] %>
             <div class="alert alert-danger" style="margin-top:10px"><%= flash[:error] %></div>
           <% end %>

@@ -160,3 +160,36 @@
 		display: none;
 	}
 }
+
+/* Sessions CSS */
+.loginContainer {
+	width: 390px;
+	padding-bottom: 30px;
+	margin: 0 auto;
+	background-color: white;
+	margin-top: 100px;
+	border-radius: 10px;
+}
+
+.loginForm {
+	width: 330px;
+	margin: 0 auto;
+	padding: 15px;
+}
+
+@media (max-width: 400px) {
+	.loginContainer {
+		width: 290px;
+		padding-bottom: 30px;
+		margin: 0 auto;
+		background-color: white;
+		margin-top: 100px;
+		border-radius: 10px;
+	}
+
+	.loginForm {
+		width: 100%;
+		padding: 10px;
+	}
+}
+
