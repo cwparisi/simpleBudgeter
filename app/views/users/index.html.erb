@@ -26,31 +26,52 @@
             <div class="col-lg-12">
 
                 <h2 class="sub-header sectionTitle">Users</h2>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>ID#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                            <th>Edit/Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+
+                <div class="usersDesktop">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                                <th>Edit/Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <% @users.each do |user| %>
+                            <tr>
+                                <td><%= user.id %></td>
+                                <td><%= user.firstName %></td>
+                                <td><%= user.lastName %></td>
+                                <td><%= user.userName %></td>
+                                <td>
+                                    <a href="/users/<%=user.id%>/edit"><i class="fa fa-pencil fa-fw" style="color: #388E3C"></i></a>
+                                        <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/users/<%=user.id%>"><i class="fa fa-trash fa-fw" style="color: #616161"></i></a>
+                                </td>
+                            </tr>
+                        <% end %>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="usersMobile">
                     <% @users.each do |user| %>
-                        <tr>
-                            <td><%= user.id %></td>
-                            <td><%= user.firstName %></td>
-                            <td><%= user.lastName %></td>
-                            <td><%= user.userName %></td>
-                            <td>
-                                <a href="/users/<%=user.id%>/edit"><i class="fa fa-pencil fa-fw" style="color: #388E3C"></i></a>
-                                    <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/users/<%=user.id%>"><i class="fa fa-trash fa-fw" style="color: #616161"></i></a>
-                            </td>
-                        </tr>
+                    <div class="row usersBanner" style="height: 90px; border-bottom: 1px solid gray; padding: 0px;">
+                        <div class="col-xs-10" style="text-align: left; padding-top: 7px">
+                            <p style="font-size: 30px; color: #616161; margin: 0px"><%= user.userName %></p>
+                            <p style="font-size: 20px; color: #616161; margin: 0px"><%= user.firstName %> <%= user.lastName %></p>
+                        </div>
+ 
+                        <div class="col-xs-2" style="padding: 15px; text-align: right">
+                            <a href="/users/<%=user.id%>/edit"><i class="fa fa-pencil fa-fw editBtn" style="font-size: 20px; margin-bottom: 17px"></i></a><br>
+                            <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/users/<%=user.id%>"><i class="fa fa-trash fa-fw deleteBtn" style="font-size: 20px"></i></a>
+                        </div>
+                    </div>
                     <% end %>
-                    </tbody>
-                </table>
+
+                    <a href="/users/new"><div class="floatingBtn">+</div></a>
+                </div>
 
             </div> <!-- col-lg-12 -->
           </div> <!-- row -->

@@ -147,3 +147,16 @@
 		display: none;
 	}
 }
+
+/* Users CSS */
+@media (max-width: 767px) {
+	.usersDesktop {
+		display: none;
+	}
+}
+
+@media (min-width: 768px) {
+	.usersMobile {
+		display: none;
+	}
+}
