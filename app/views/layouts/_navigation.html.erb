@@ -8,7 +8,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/overview/index">Budgeter</a>
+            <a class="navbar-brand brand-desktop" href="/overview/index">Budgeter</a>
+            <span class="navbar-brand brand-mobile"><%=params[:controller].capitalize%></span>
             <span id="sessionItems" style="color: #FFF; float: right; font-size: 18px; position: fixed; right: 20px; top: 11px; "> 
                 <i class="fa fa-user" style="color: #FFF"></i> <%= session[:username] %>
                 <a class="navbar-logout" href="/logout" style="text-decoration: none; color: #fff"><i class="fa fa-sign-out" style="color: #FFF; margin-left: 40px"></i> Logout</a>

@@ -1,7 +1,7 @@
 class Fund < ActiveRecord::Base
 	has_many :transactions, :dependent => :destroy
 	belongs_to :user
-	validates :name, presence: true
+	validates :name, presence: true, length: {maximum: 21}
 	validates :amount, presence: true, numericality: { greater_than: 0 }
 	validates :color, presence: true, length: { is:7 }
 	validates :iconUrl, presence: true

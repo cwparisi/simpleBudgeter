@@ -18,8 +18,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="sub-header">Funds</h2>
-                        <table class="table table-striped">
+                        <h2 class="sub-header sectionTitle">Funds</h2>
+                        <table class="table table-striped fundsDesktop">
                             <thead>
                                 <tr>
                                     <!--<th>ID#</th>-->
@@ -46,6 +46,27 @@
                             <% end %>
                             </tbody>
                         </table>
+
+                        <div class="fundsMobile">
+                            <% @funds.each do |fund| %>
+                            <div class="row fundBanner" style="height: 80px; border-bottom: 1px solid gray; padding: 15px">
+                                <span style="width: 56px; float: left; margin-right: 18px">
+                                    <i class="fa fa-<%=fund.iconUrl%> fa-fw" style="font-size: 45px; color: <%=fund.color%>"></i>
+                                </span>
+                                <span style="float: left">
+                                    <p style="margin: 0px; font-size: 16px; color: #616161"><%= fund.name %></p>
+                                    <p style="margin: 0px; font-size: 19px; color: #616161"><%= number_to_currency(fund.amount) %></p>
+                                </span>
+                                <span style="text-align: right; float: right">
+                                    <i class="fa fa-pencil fa-fw editBtn" style="font-size: 18px; margin-bottom: 14px"></i><br>
+                                    <i class="fa fa-trash fa-fw deleteBtn" style="font-size: 18px"></i>
+                                </span>
+                            </div>
+                            <% end %>
+                        </div>
+                        
+                        
+                        <br>
                     </div> <!-- col-lg-12 -->
                 </div> <!-- row -->
 

@@ -71,6 +71,7 @@
 
 	.monthNav {
 		float: none;
+		min-width: 0px;
 		margin-top: 10px;
 		margin-bottom: 0px;
 	}
@@ -87,4 +88,16 @@
 	margin-left: 15px;
 	color: #616161;
 	font-size: 18px;
+}
+
+@media (max-width: 767px) {
+	.fundsDesktop {
+		display: none;
+	}
+}
+
+@media (min-width: 768px) {
+	.fundsMobile {
+		display: none;
+	}
 }
