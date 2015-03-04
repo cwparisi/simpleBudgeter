@@ -127,6 +127,10 @@
 	.transactionsDesktop {
 		display: none;
 	}
+
+	.transactionsMobile {
+		margin-bottom: 50px;
+	}
 }
 
 @media (min-width: 768px) {
@@ -193,3 +197,35 @@
 	}
 }
 
+/* Nav Footer CSS */
+@media (min-width: 768px) {
+	.navFooter {
+		display: none;
+	}
+}
+
+.navFooter {
+	height: 50px;
+	width: 100%;
+	background-color: #616161;
+	position: fixed;
+	bottom: 0
+}
+
+.navFooterItem {
+	width: 20%;
+	float: left;
+	padding: 15px
+}
+
+.navFooterIcon {
+	font-size: 25px;
+	color: #EFEFEF;
+}
+
+.navFooterActive {
+	background-color: #303030;
+	color: #fff;
+}
+
+/* 303030 */
