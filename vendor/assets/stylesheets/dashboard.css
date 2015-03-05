@@ -63,6 +63,7 @@ body {
 
 .navbar-inverse .navbar-brand {
   color: #fff;
+  font-size: 25px;
 }
 
 .navbar-inverse .navbar-toggle {

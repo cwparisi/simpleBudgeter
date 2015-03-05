@@ -16,6 +16,12 @@
 	color: #616161;
 }
 
+@media (max-width: 767px){
+	.sub-header {
+		font-size: 25px;
+	}
+}
+
 .panelAmount {
     font-size: 40px;
 }
@@ -45,6 +51,33 @@
 
 .fieldLabel {
 	color: #616161;
+}
+
+@media (max-width: 767px) {
+	.fieldLabel {
+		color: #616161;
+
+	}
+
+	.fieldRowMobile {
+		margin-bottom: 8px;
+	}
+}
+
+@media (max-width: 767px) {
+	.fieldsDesktop {
+		display: none;
+	}
+
+	.submitBtn {
+		float: right;
+	}
+}
+
+@media (min-width: 768px) {
+	.fieldsMobile {
+		display: none;
+	}
 }
 
 .sectionTitle {
@@ -130,6 +163,11 @@
 
 	.transactionsMobile {
 		margin-bottom: 50px;
+	}
+
+	.monthSelection {
+		font-size: 25px;
+
 	}
 }
 

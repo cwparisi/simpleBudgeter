@@ -32,6 +32,7 @@
                                     </div>
                                 <% end %>
 
+                                <div class="fieldsDesktop">
                                 <div class="row formFieldRow">
                                     <div class="col-xs-3">
                                         <label for="fund_name" class="fieldLabel">Fund Name</label>
@@ -107,6 +108,73 @@
                                 </div>
                             </div>
 
+                        </div>
+
+                        <div class="fieldsMobile">
+
+                            <div class="fieldRowMobile">
+                                <input type="text" class="form-control" name="fund[name]" id="fund_name" value="<%=@fund.name%>" placeholder="Enter name" style="width: 200px">
+                                
+                                <label for="fund_name" class="fieldLabel">Fund Name</label>
+                            </div>
+
+                            <div class="fieldRowMobile">
+                                <input type="text" class="form-control" name="fund[amount]" id="fund_amount" value="<%=@fund.amount%>" placeholder="Enter amount" style="width: 200px">
+                                
+                                <label for="fund_name" class="fieldLabel">Fund Amount</label>
+                            </div>
+
+                            <div class="fieldRowMobile">
+                                <input hidden type="text" value="<%= @fund.color %>" name="fund[color]" id="fund_color">
+                                <div class="btn-group">
+                                    <button id="iconBtn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <span id="colorFieldHtml"> 
+                                            <% if @fund.color and @fund.color != "" %>
+                                                <i class="fa fa-square fa-fw" style="color: <%=@fund.color%>"></i> 
+                                            <% else %>
+                                                Select a color
+                                            <% end %>
+                                        </span><span style="padding-left: 5px" class="fa fa-caret-down"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="height: auto; max-height: 200px; overflow-x: hidden;">
+
+                                      <% @colors.each do |color| %>
+                                        <li onclick="setColorValue('<%=color%>')"><a href="#"><i class="fa fa-square fa-fw" style="color: <%=color%>"></i></a></li>
+                                      <% end %>
+
+                                    </ul>
+                                </div><br>
+                                <label for="fund_color" class="fieldLabel">Color</label>
+                            </div>
+
+                            <div class="fieldRowMobile">
+                                <input hidden type="text" value="<%= @fund.iconUrl %>" name="fund[iconUrl]" id="fund_iconUrl">
+                                <div class="btn-group">
+                                    <button id="iconBtn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <span id="iconFieldHtml"> 
+                                            <% if @fund.iconUrl and @fund.iconUrl != "" %>
+                                                <i class="fa fa-<%=@fund.iconUrl%> fa-fw"></i>
+                                            <% else %>
+                                                Select an icon
+                                            <% end %>
+                                        </span>
+                                        <span style="padding-left: 5px" class="fa fa-caret-down"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="height: auto; max-height: 200px; overflow-x: hidden;">
+
+                                      <% @icons.each do |icon| %>
+                                        <li onclick="setIconValue('<%=icon%>')"><a href="#"><i class="fa fa-<%=icon%> fa-fw"></i> <%=icon%></a></li>
+                                      <% end %>
+
+                                    </ul>
+                                </div><br>
+                                <label for="fund_iconUrl" class="fieldLabel">Icon</label>
+                            </div>
+
+                        </div>
+
+
+
                             <br>
 
                           <script>
@@ -125,7 +193,7 @@
                           }
                           </script>
                          
-                          <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff" value="<%= action_name.capitalize%> Fund">
+                          <input type="submit" name="commit" class="btn btn-default submitBtn" style="background-color: #388E3C; color: #fff" value="<%= action_name.capitalize%> Fund">
                         <% end %>
                     </div> <!-- form-container -->
                     </div> <!-- col-lg-12 -->
