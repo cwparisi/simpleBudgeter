@@ -4,7 +4,8 @@
         <div class="navbar-header" >
             
             <a class="navbar-brand brand-desktop" href="/overview/index">Budgeter</a>
-            <% if params[:action] == "new" || params[:action] == "edit"%>
+            <% if params[:action] == "new" || params[:action] == "edit" || params[:action] == "create"%>
+
                 <span class="navbar-brand brand-mobile"><%=params[:action].capitalize%> <%=params[:controller].capitalize.singularize%></span>
                 <span id="formItems" style="color: #FFF; float: right; font-size: 18px; position: fixed; right: 20px; top: 11px; ">
                 <i class="fa fa-check" style="color: #FFF" onclick="$('#new_<%=params[:controller].singularize%>').submit();"></i>
