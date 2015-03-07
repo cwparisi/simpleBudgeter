@@ -4,11 +4,20 @@
         <div class="navbar-header" >
             
             <a class="navbar-brand brand-desktop" href="/overview/index">Budgeter</a>
-            <span class="navbar-brand brand-mobile"><%=params[:controller].capitalize%></span>
+            <% if params[:action] == "new" || params[:action] == "edit"%>
+                <span class="navbar-brand brand-mobile"><%=params[:action].capitalize%> <%=params[:controller].capitalize.singularize%></span>
+                <span id="formItems" style="color: #FFF; float: right; font-size: 18px; position: fixed; right: 20px; top: 11px; ">
+                <i class="fa fa-check" style="color: #FFF" onclick="$('#new_<%=params[:controller].singularize%>').submit();"></i>
+                </span>
+            <% else %>
+                <span class="navbar-brand brand-mobile"><%=params[:controller].capitalize%></span>
+            <% end %>
+            
             <span id="sessionItems" style="color: #FFF; float: right; font-size: 18px; position: fixed; right: 20px; top: 11px; "> 
                 <i class="fa fa-user" style="color: #FFF"></i> <%= session[:username] %>
                 <a class="navbar-logout" href="/logout" style="text-decoration: none; color: #fff"><i class="fa fa-sign-out" style="color: #FFF; margin-left: 40px"></i> Logout</a>
             </span>
+            
         </div>
     </div>
 

@@ -39,6 +39,12 @@ body {
   }
 }
 
+@media (min-width: 767px) {
+  #formItems {
+    display: none;
+  }
+}
+
 /*
  * Global add-ons
  */
