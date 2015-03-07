@@ -54,6 +54,12 @@ body {
   border-bottom: 1px solid #eee;
 }
 
+@media (max-width: 767px) {
+  .sub-header {
+    display: none;
+  }
+}
+
 /*
  * Top navigation
  * Hide default border to remove 1px line.

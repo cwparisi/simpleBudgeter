@@ -91,7 +91,7 @@
 	}
 
 	.submitBtn {
-		float: right;
+		display: none;
 	}
 }
 
@@ -170,6 +170,14 @@
 	.fundsMobile {
 		display: none;
 	}
+}
+
+.colorSelection {
+	background-color: #c4c4c4; 
+}
+
+.iconSelection {
+	background-color: #c4c4c4; 
 }
 
 /* Transaction CSS */
