@@ -136,7 +136,7 @@
                                     <ul class="dropdown-menu" style="height: auto; max-height: 200px; overflow-x: hidden;">
 
                                       <% @colors.each do |color| %>
-                                        <li onclick="setColorValue('<%=color%>')"><a href="#"><i class="fa fa-square fa-fw" style="color: <%=color%>"></i></a></li>
+                                        <li onclick="setColorValue('<%=color%>')"><i class="fa fa-square fa-fw" style="color: <%=color%>"></i></li>
                                       <% end %>
 
                                     </ul>
@@ -159,7 +159,7 @@
                                     <ul class="dropdown-menu" style="height: auto; max-height: 200px; overflow-x: hidden;">
 
                                       <% @icons.each do |icon| %>
-                                        <li onclick="setIconValue('<%=icon%>')"><a href="#"><i class="fa fa-<%=icon%> fa-fw"></i> <%=icon%></a></li>
+                                        <li onclick="setIconValue('<%=icon%>')"><i class="fa fa-<%=icon%> fa-fw"></i> <%=icon%></li>
                                       <% end %>
 
                                     </ul>
