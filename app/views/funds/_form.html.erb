@@ -124,7 +124,7 @@
                             <div class="fieldRowMobile">
                                 <input hidden type="text" value="<%= @fund.color %>" name="fund[color]" id="fund_color">
                                 <div class="btn-group" style="width: 40%">
-                                    <button id="iconBtn" type="button" class="mobile-form-dropdown dropdown-toggle" data-toggle="dropdown">
+                                    <button id="iconBtn" type="button" class="btn btn-default mobile-form-dropdown dropdown-toggle" data-toggle="dropdown" style="border: none; border-bottom: 1px solid #C4C4C4; border-radius: 0px 0px 0px 0px; text-align: left; padding: 0px; font-size: 16px">
                                         <span id="colorFieldHtml" style="color: #ACACAC; text-align: left"> 
                                             <% if @fund.color and @fund.color != "" %>
                                                 <i class="fa fa-square fa-fw" style="color: <%=@fund.color%>"></i> 
@@ -146,7 +146,7 @@
                             <div class="fieldRowMobile">
                                 <input hidden type="text" value="<%= @fund.iconUrl %>" name="fund[iconUrl]" id="fund_iconUrl">
                                 <div class="btn-group" style="width: 40%">
-                                    <button id="iconBtn" type="button" class="mobile-form-dropdown dropdown-toggle" data-toggle="dropdown">
+                                    <button id="iconBtn" type="button" class="btn btn-default mobile-form-dropdown dropdown-toggle" data-toggle="dropdown" style="border: none; border-bottom: 1px solid #C4C4C4; border-radius: 0px 0px 0px 0px; text-align: left; padding: 0px; font-size: 16px">
                                         <span id="iconFieldHtml" style="color: #ACACAC"> 
                                             <% if @fund.iconUrl and @fund.iconUrl != "" %>
                                                 <i class="fa fa-<%=@fund.iconUrl%> fa-fw"></i>
