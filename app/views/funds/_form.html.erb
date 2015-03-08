@@ -32,206 +32,91 @@
                                     </div>
                                 <% end %>
 
-                                <div class="fieldsDesktop">
-                                <div class="row formFieldRow">
-                                    <div class="col-xs-3">
-                                        <label for="fund_name" class="fieldLabel">Fund Name</label>
+                                <div class="fields">
+
+                                    <div class="fieldRowMobile">
+                                        <div class="desktopLabel">Name</div>
+                                        <input type="text" class="mobile-form-field" name="fund[name]" id="fund_name" value="<%=@fund.name%>" placeholder="Name of fund" style="width: 100%; max-width: 400px; height: 54px">
                                     </div>
-                                    <div class="col-xs-9">
-                                        <input type="text" class="form-control" name="fund[name]" id="fund_name" value="<%=@fund.name%>" placeholder="Enter name" style="width: 200px">
-                                    </div> 
-                                </div>
 
-                                <div class="row formFieldRow">
-                                    <div class="col-xs-3">
-                                        <label for="fund_amount" class="fieldLabel">Fund Amount</label>
+                                    <div class="fieldRowMobile">
+                                        <div class="desktopLabel">Amount</div>
+                                        <input type="text" class="mobile-form-field" name="fund[amount]" id="fund_amount" value="<%=@fund.amount%>" placeholder="Amount" style="width: 100%; max-width: 400px; height: 54px">
                                     </div>
-                                    <div class="col-xs-9">
-                                        <input type="text" class="form-control" name="fund[amount]" id="fund_amount" value="<%=@fund.amount%>" placeholder="Enter amount" style="width: 200px">
-                                    </div> 
-                                </div>
 
-                                <div class="row formFieldRow">
-                                    <div class="col-xs-3">
-                                        <label for="fund_color" class="fieldLabel">Color</label>
-                                    </div>
-                                    <div class="col-xs-9">
-                                        <div class="btn-group">
-                                            <button id="iconBtn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                                <span id="colorFieldHtml"> 
-                                                    <% if @fund.color and @fund.color != "" %>
-                                                        <i class="fa fa-square fa-fw" style="color: <%=@fund.color%>"></i> 
-                                                    <% else %>
-                                                        Select a color
-                                                    <% end %>
-                                                </span><span style="padding-left: 5px" class="fa fa-caret-down"></span>
-                                            </button>
-                                            <ul class="dropdown-menu" style="height: auto; max-height: 200px; overflow-x: hidden;">
-
-                                              <% @colors.each do |color| %>
-                                                <li onclick="setColorValue('<%=color%>')"><a href="#"><i class="fa fa-square fa-fw" style="color: <%=color%>"></i></a></li>
-                                              <% end %>
-
-                                            </ul>
+                                    <div class="colors" style="margin-top: 15px">
+                                        <p class="" style="color: #ACACAC; font-size: 16px;">Color</p>
+                                        <div style="padding-top: 16px;">
+                                        <% @colors.each do |color| %>
+                                            <i class="fa fa-circle fa-fw <%=color[1..6]%> <% if @fund.color == color %> colorSelection <%end%>" onclick="selectColorValue('<%=color[1..6]%>')" style="width: 52px; color: <%=color%>; font-size: 25px; padding: 10px; margin-right: 2px; border-radius: 12px"></i>
+                                        <% end %>
                                         </div>
                                     </div>
-                                </div>
 
-                            <div class="row formFieldRow">
-                                
-                                <div class="col-xs-3">
-                                    <label for="fund_iconUrl" class="fieldLabel">Icon</label>
-                                </div>
-                                <div class="col-xs-9">
-                                    <div class="btn-group">
-                                        <button id="iconBtn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                            <span id="iconFieldHtml"> 
-                                                <% if @fund.iconUrl and @fund.iconUrl != "" %>
-                                                    <i class="fa fa-<%=@fund.iconUrl%> fa-fw"></i>
-                                                <% else %>
-                                                    Select an icon
-                                                <% end %>
-                                            </span>
-                                            <span style="padding-left: 5px" class="fa fa-caret-down"></span>
-                                        </button>
-                                        <ul class="dropdown-menu" style="height: auto; max-height: 200px; overflow-x: hidden;">
-
-                                          <% @icons.each do |icon| %>
-                                            <li onclick="setIconValue('<%=icon%>')"><a href="#"><i class="fa fa-<%=icon%> fa-fw"></i> <%=icon%></a></li>
-                                          <% end %>
-
-                                        </ul>
+                                    <div class="icons" style="margin-top: 15px">
+                                        <p style="color: #ACACAC; font-size: 16px;">Icon</p>
+                                        <% @icons.each do |icon| %>
+                                            <i class="fa fa-<%=icon%> fa-fw <%=icon%> <% if @fund.iconUrl == icon %> iconSelection <%end%>" onclick="selectIconValue('<%=icon%>')" style="width: 52px; font-size: 25px; padding: 10px; border-radius: 12px; margin-right: 2px"></i>
+                                        <% end %>
                                     </div>
+
+                                    <div class="submitBtn">
+                                        <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff; float: right;" value="<%= action_name.capitalize%> income">
+                                    </div>
+
                                 </div>
-                            </div>
-                            <input type="submit" name="commit" class="btn btn-default submitBtn" style="background-color: #388E3C; color: #fff; margin-left: 300px" value="<%= action_name.capitalize%> Fund">
 
-                        </div>
+                                <!-- real color field that holds value from drop down selection -->
+                                <input hidden type="text" value="<%= @fund.color %>" name="fund[color]" id="fund_color">
+                                <!-- real iconUrl field that holds value from drop down selection -->
+                                <input hidden type="text" value="<%= @fund.iconUrl %>" name="fund[iconUrl]" id="fund_iconUrl">
 
-                        <div class="fieldsMobile">
+                                <br>
 
-                            <div class="fieldRowMobile">
-                                <input type="text" class="mobile-form-field" name="fund[name]" id="fund_name" value="<%=@fund.name%>" placeholder="Name" style="width: 100%">
-                                
-                            </div>
+                                  <script>
+                                  function setColorValue(value) {
+                                    $("#fund_color").val(value);
+                                    var color = "<i class='fa fa-square fa-fw' style='color: " + value + "'></i>"
+                                    $("#colorFieldHtml").html(color);
+                                  }
 
-                            <div class="fieldRowMobile">
-                                <input type="text" class="mobile-form-field" name="fund[amount]" id="fund_amount" value="<%=@fund.amount%>" placeholder="Amount" style="width: 100%">
-                            </div>
+                                  function selectColorValue(value) {
+                                    $( "i" ).removeClass( "colorSelection" );
+                                    var colorClass = "."+value;
+                                    $(colorClass).toggleClass("colorSelection");
+                                    $("#fund_color").val("#"+value);                      
+                                  }
+                                  </script>
 
-                            <div class="fieldRowMobile" style="display: none">
-                                
+                                  <script>
+                                  function setIconValue(value) {
+                                    $("#fund_iconUrl").val(value);
+                                    var iconUrl = "<i class='fa fa-" + value + " fa-fw'></i>"
+                                    $("#iconFieldHtml").html(iconUrl);
+                                  }
 
-                                <div class="btn-group" style="width: 40%">
-                                    <button id="iconBtn" type="button" class="btn btn-default mobile-form-dropdown dropdown-toggle" data-toggle="dropdown" style="border: none; border-bottom: 1px solid #C4C4C4; border-radius: 0px 0px 0px 0px; text-align: left; padding: 0px; font-size: 16px">
-                                        <span id="colorFieldHtml" style="color: #ACACAC; text-align: left"> 
-                                            <% if @fund.color and @fund.color != "" %>
-                                                <i class="fa fa-square fa-fw" style="color: <%=@fund.color%>"></i> 
-                                            <% else %>
-                                                Color
-                                            <% end %>
-                                        </span><span style="padding-left: 5px; color: #ACACAC; float: right" class="fa fa-caret-down"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" style="height: auto; max-height: 200px; overflow-x: hidden;">
-
-                                      <% @colors.each do |color| %>
-                                        <li onclick="setColorValue('<%=color%>')"><i class="fa fa-square fa-fw" style="color: <%=color%>"></i></li>
-                                      <% end %>
-
-                                    </ul>
-                                </div><br>
-                            </div>
-
-                            <div class="fieldRowMobile" style="display: none">
-                                <div class="btn-group" style="width: 40%">
-                                    <button id="iconBtn" type="button" class="btn btn-default mobile-form-dropdown dropdown-toggle" data-toggle="dropdown" style="border: none; border-bottom: 1px solid #C4C4C4; border-radius: 0px 0px 0px 0px; text-align: left; padding: 0px; font-size: 16px">
-                                        <span id="iconFieldHtml" style="color: #ACACAC"> 
-                                            <% if @fund.iconUrl and @fund.iconUrl != "" %>
-                                                <i class="fa fa-<%=@fund.iconUrl%> fa-fw"></i>
-                                            <% else %>
-                                                Icon
-                                            <% end %>
-                                        </span>
-                                        <span style="padding-left: 5px; color: #ACACAC; float: right" class="fa fa-caret-down"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" style="height: auto; max-height: 200px; overflow-x: hidden;">
-
-                                      <% @icons.each do |icon| %>
-                                        <li onclick="setIconValue('<%=icon%>')"><i class="fa fa-<%=icon%> fa-fw"></i> <%=icon%></li>
-                                      <% end %>
-
-                                    </ul>
-                                </div><br>
-                            </div>
-
-                            <div class="colors" style="margin-top: 15px">
-                                <p style="color: #ACACAC; font-size: 16px;">Color</p>
-                                <% @colors.each do |color| %>
-                                    <i class="fa fa-circle fa-fw <%=color[1..6]%> <% if @fund.color == color %> colorSelection <%end%>" onclick="selectColorValue('<%=color[1..6]%>')" style="width: 52px; color: <%=color%>; font-size: 25px; padding: 10px; border-radius: 12px"></i>
-                                <% end %>
-                            </div>
-
-                            <div class="icons" style="margin-top: 15px">
-                                <p style="color: #ACACAC; font-size: 16px;">Icon</p>
-                                <% @icons.each do |icon| %>
-                                    <i class="fa fa-<%=icon%> fa-fw <%=icon%> <% if @fund.iconUrl == icon %> iconSelection <%end%>" onclick="selectIconValue('<%=icon%>')" style="width: 52px; font-size: 25px; padding: 10px; border-radius: 12px"></i>
-                                <% end %>
-                            </div>
-
-                        </div>
-
-                        <!-- real color field that holds value from drop down selection -->
-                        <input hidden type="text" value="<%= @fund.color %>" name="fund[color]" id="fund_color">
-                        <!-- real iconUrl field that holds value from drop down selection -->
-                        <input hidden type="text" value="<%= @fund.iconUrl %>" name="fund[iconUrl]" id="fund_iconUrl">
-
-
-
-                            <br>
-
-                          <script>
-                          function setColorValue(value) {
-                            $("#fund_color").val(value);
-                            var color = "<i class='fa fa-square fa-fw' style='color: " + value + "'></i>"
-                            $("#colorFieldHtml").html(color);
-                          }
-
-                          function selectColorValue(value) {
-                            $( "i" ).removeClass( "colorSelection" );
-                            var colorClass = "."+value;
-                            $(colorClass).toggleClass("colorSelection");
-                            $("#fund_color").val("#"+value);                      
-                          }
-                          </script>
-
-                          <script>
-                          function setIconValue(value) {
-                            $("#fund_iconUrl").val(value);
-                            var iconUrl = "<i class='fa fa-" + value + " fa-fw'></i>"
-                            $("#iconFieldHtml").html(iconUrl);
-                          }
-
-                          function selectIconValue(value) {
-                            $( "i" ).removeClass( "iconSelection" );
-                            var colorClass = "."+value;
-                            $(colorClass).toggleClass("iconSelection");
-                            $("#fund_iconUrl").val(value);                      
-                          }
-                          </script>
+                                  function selectIconValue(value) {
+                                    $( "i" ).removeClass( "iconSelection" );
+                                    var colorClass = "."+value;
+                                    $(colorClass).toggleClass("iconSelection");
+                                    $("#fund_iconUrl").val(value);                      
+                                  }
+                                  </script>
                          
-                          
-                        <% end %>
-                    </div> <!-- form-container -->
-                    </div> <!-- col-lg-12 -->
-                  </div> <!-- row -->
-                </div> <!-- container-fluid -->
-            </div> <!-- page wrapper -->
-</div> <!-- wrapper -->
-<%= render "layouts/navigationFooter" %>
+                                <% end %>
+                            </div> <!-- form-container -->
+                        </div> <!-- col-lg-12 -->
+                    <div style="height: 100px;"></div>
+                </div> <!-- row -->
+            </div> <!-- container-fluid -->
+        </div> <!-- page wrapper -->
+    </div> <!-- wrapper -->
+
+    <%= render "layouts/navigationFooter" %>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  </body>
+    </body>
 </html>
