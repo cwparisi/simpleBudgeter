@@ -36,70 +36,55 @@
                         </div>
                     <% end %>
 
-                    <div class="row formFieldRow">
-                        <div class="col-xs-3">
-                            <label for="transaction_date" class="fieldLabel">Transaction Date</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <%= t.date_field(:date, class: "form-control", style: 'width:200px') %>
-                        </div> 
+                    <div class="fieldRowMobile">
+                        <div class="desktopLabel">Transaction Date</div>
+                        <%= t.date_field(:date, class: "mobile-form-field", style: 'color: #acacac; width: 100%; max-width: 200px; height: 54px') %>
                     </div>
 
-                    <div class="row formFieldRow">
-                        <div class="col-xs-3">
-                            <label for="transaction_location" class="fieldLabel">Transaction Location</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <%= t.text_field(:location, class: "form-control", style: "width:200px", placeholder: "Enter location") %>
-                        </div> 
+                    <div class="fieldRowMobile">
+                        <div class="desktopLabel">Location</div>
+                        
+                        <%= t.text_field(:location, class: "mobile-form-field", style: "width: 100%; max-width: 400px; height: 54px", placeholder: "Transaction location") %>
                     </div>
 
-                    <div class="row formFieldRow">
-                        <div class="col-xs-3">
-                            <label for="transaction_amount" class="fieldLabel">Amount</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <%= t.text_field(:amount, class: "form-control", style: "width:200px", placeholder: "Enter amount") %>
-                        </div> 
+                    <div class="fieldRowMobile">
+                        <div class="desktopLabel">Amount</div>
+                        
+                        <%= t.text_field(:amount, class: "mobile-form-field", style: "width: 100%; max-width: 400px; height: 54px", placeholder: "Transaction amount") %>
                     </div>
 
-                    <div class="row formFieldRow">
-                        <div class="col-xs-3">
-                            <label for="transaction_transactionType" class="fieldLabel">Type</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <%= t.text_field(:transactionType, class: "form-control", style: "width:200px", placeholder: "Enter payment type") %>
-                        </div> 
-                    </div>
-                   
-                    <div class="row formFieldRow">
-                        <div class="col-xs-3">
-                            <label for="transaction_fund" class="fieldLabel">Fund</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <%= t.collection_select(:fund_id, Fund.where(:user_id => session[:user_id]), :id, :name, {:prompt=>true}, {:class=>'form-control', :style=>'width: 200px'})%>
-                        </div> 
+                    <div class="fieldRowMobile">
+                        <div class="desktopLabel">Type</div>
+                        
+                        <%= t.text_field(:transactionType, class: "mobile-form-field", style: "width: 100%; max-width: 400px; height: 54px", placeholder: "Payment Type") %>
                     </div>
 
-                    <div class="row formFieldRow">
-                        <div class="col-xs-3">
-                            <label for="description" class="fieldLabel">Description</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <%= t.text_field(:description, class: "form-control", style: "width:200px", placeholder: "Enter description") %>
-                        </div> 
+                    <div class="fieldRowMobile">
+                        <div class="desktopLabel">Fund</div>
+                        
+                        <%= t.collection_select(:fund_id, Fund.where(:user_id => session[:user_id]), :id, :name, {:prompt=>"Select fund"}, {:class=>'mobile-form-field', :style=>'color: #acacac; width: 100%; max-width: 180px; height: 54px'})%><i style="color: #acacac; border-bottom: 1px solid #c4c4c4; padding-bottom: 19px;" class="fa fa-fw fa-caret-down"></i>
                     </div>
 
-                    <br>
+                    <div class="fieldRowMobile">
+                        <div class="desktopLabel">Description</div>
+                        
+                        <%= t.text_field(:description, class: "mobile-form-field", style: "width: 100%; max-width: 400px; height: 54px", placeholder: "Brief info for reference") %>
+                    </div>
+
+                    <br><br>
                  
-                    <% if action_name == "edit" %>
-                        <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff" value="Update Transaction">
-                    <% else %>
-                        <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff" value="Register Transaction">
-                    <% end %>
+                    <div class="submitBtn">
+                        <% if action_name == "edit" %>
+                            <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff" value="Update Transaction">
+                        <% else %>
+                            <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff" value="Register Transaction">
+                        <% end %>
+                    </div>
+
                 <% end %>
             </div> <!-- form-container -->
             </div> <!-- col-lg-12 -->
+            <div style="height: 100px;"></div>
           </div> <!-- row -->
         </div> <!-- container-fluid -->
     </div> <!-- page wrapper -->

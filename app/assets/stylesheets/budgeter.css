@@ -54,6 +54,7 @@
 }
 
 .mobile-form-field {
+	background: none;
 	border: none;
 	border-bottom: 1px solid #C4C4C4;
 	height: 46px;
@@ -61,15 +62,17 @@
 	color: #616161;
 	border-radius: 0px 0px 0px 0px;
 	padding: 0px;
+	-webkit-appearance: none;
 }
 
 .desktopLabel {
 	width: 250px; 
 	float: left; 
-	font-size: 16px; 
-	padding-top: 16px; 
+	font-size: 14px; 
+	padding-top: 18px; 
 	padding-bottom: 16px; 
 	color: #616161;
+
 }
 
 @media (max-width: 767px) {
