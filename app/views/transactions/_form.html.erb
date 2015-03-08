@@ -38,19 +38,23 @@
 
                     <div class="fieldRowMobile">
                         <div class="desktopLabel">Transaction Date</div>
-                        <%= t.date_field(:date, class: "mobile-form-field", style: 'color: #acacac; width: 100%; max-width: 200px; height: 54px') %>
+                        <% if !@transaction.date %>
+                        <%= t.date_field(:date, :value => Time.now.strftime('%Y-%m-%d'), class: "mobile-form-field", style: 'color: #616161; width: 100%; max-width: 180px; height: 54px') %><i style="color: #acacac; border-bottom: 1px solid #c4c4c4; padding-bottom: 19px;" class="fa fa-fw fa-caret-down"></i>
+                        <% else %>
+                        <%= t.date_field(:date, class: "mobile-form-field", style: 'color: #616161; width: 100%; max-width: 180px; height: 54px') %><i style="color: #acacac; border-bottom: 1px solid #c4c4c4; padding-bottom: 19px;" class="fa fa-fw fa-caret-down"></i>
+                        <% end %>
                     </div>
 
                     <div class="fieldRowMobile">
                         <div class="desktopLabel">Location</div>
                         
-                        <%= t.text_field(:location, class: "mobile-form-field", style: "width: 100%; max-width: 400px; height: 54px", placeholder: "Transaction location") %>
+                        <%= t.text_field(:location, class: "mobile-form-field", style: "width: 100%; max-width: 400px; height: 54px", placeholder: "Transaction Location") %>
                     </div>
 
                     <div class="fieldRowMobile">
                         <div class="desktopLabel">Amount</div>
                         
-                        <%= t.text_field(:amount, class: "mobile-form-field", style: "width: 100%; max-width: 400px; height: 54px", placeholder: "Transaction amount") %>
+                        <%= t.text_field(:amount, class: "mobile-form-field", style: "width: 100%; max-width: 400px; height: 54px", placeholder: "Transaction Amount") %>
                     </div>
 
                     <div class="fieldRowMobile">
@@ -62,13 +66,13 @@
                     <div class="fieldRowMobile">
                         <div class="desktopLabel">Fund</div>
                         
-                        <%= t.collection_select(:fund_id, Fund.where(:user_id => session[:user_id]), :id, :name, {:prompt=>"Select fund"}, {:class=>'mobile-form-field', :style=>'color: #acacac; width: 100%; max-width: 180px; height: 54px'})%><i style="color: #acacac; border-bottom: 1px solid #c4c4c4; padding-bottom: 19px;" class="fa fa-fw fa-caret-down"></i>
+                        <%= t.collection_select(:fund_id, Fund.where(:user_id => session[:user_id]), :id, :name, {:prompt=>"Select Fund"}, {:class=>'mobile-form-field', :style=>'color: #616161; width: 100%; max-width: 180px; height: 54px'})%><i style="color: #616161; border-bottom: 1px solid #c4c4c4; padding-bottom: 19px;" class="fa fa-fw fa-caret-down"></i>
                     </div>
 
                     <div class="fieldRowMobile">
                         <div class="desktopLabel">Description</div>
                         
-                        <%= t.text_field(:description, class: "mobile-form-field", style: "width: 100%; max-width: 400px; height: 54px", placeholder: "Brief info for reference") %>
+                        <%= t.text_field(:description, class: "mobile-form-field", style: "width: 100%; max-width: 400px; height: 54px", placeholder: "Brief Info For Reference") %>
                     </div>
 
                     <br><br>
@@ -84,7 +88,6 @@
                 <% end %>
             </div> <!-- form-container -->
             </div> <!-- col-lg-12 -->
-            <div style="height: 100px;"></div>
           </div> <!-- row -->
         </div> <!-- container-fluid -->
     </div> <!-- page wrapper -->
