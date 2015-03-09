@@ -55,7 +55,7 @@
                         <%= i.select(:frequency, @frequencies, {prompt: 'Select Frequency'}, class: "mobile-form-field", style: "float: left; width: 100%; max-width: 200px; height: 54px") %><i style="float: left; padding-top: 20px; color: #acacac; border-bottom: 1px solid #c4c4c4; padding-bottom: 19px;" class="fa fa-fw fa-caret-down"></i>
                     </div>
 
-                    <div class="fieldRowMobile">
+                    <div class="fieldRowMobile" style="margin-top: 54px">
                         <div class="desktopLabel">Hours/Week</div>
                         
                         <%= i.text_field(:weekly_hours, class: "mobile-form-field", style: "width: 100%; max-width: 220px; height: 54px", placeholder: "Hours Per Week") %>
@@ -69,7 +69,6 @@
                 <% end %>
             </div> <!-- form-container -->
             </div> <!-- col-lg-12 -->
-            <div style="height: 100px;"></div>
           </div> <!-- row -->
         </div> <!-- container-fluid -->
     </div> <!-- page wrapper -->
