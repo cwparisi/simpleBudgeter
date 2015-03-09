@@ -61,7 +61,7 @@
                                 <td><%= transaction.location %></td>
                                 <td><%= number_to_currency(transaction.amount) %></td>
                                 <td><%= transaction.transactionType %></td>
-                                <td><%= transaction.fund.try(:name) %></td>
+                                <td><i style="color: <%=transaction.fund.try(:color)%>" class="fa fa-fw fa-<%=transaction.fund.try(:iconUrl)%>"></i><%= transaction.fund.try(:name) %></td>
                                 <!--<td><%= transaction.user.try(:userName) %></td>-->
                                 <td><%= transaction.description %></td>
                                 <td>

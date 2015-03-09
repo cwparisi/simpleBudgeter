@@ -39,9 +39,9 @@
                     <div class="fieldRowMobile">
                         <div class="desktopLabel">Transaction Date</div>
                         <% if !@transaction.date %>
-                        <%= t.date_field(:date, :value => Time.now.strftime('%Y-%m-%d'), class: "mobile-form-field", style: 'color: #616161; width: 100%; max-width: 180px; height: 54px') %><i style="color: #acacac; border-bottom: 1px solid #c4c4c4; padding-bottom: 19px;" class="fa fa-fw fa-caret-down"></i>
+                        <%= t.date_field(:date, :value => Time.now.strftime('%Y-%m-%d'), class: "mobile-form-field", style: 'color: #616161; width: 100%; max-width: 180px; height: 54px') %><i style="color: #616161; border-bottom: 1px solid #c4c4c4; padding-bottom: 19px;" class="fa fa-fw fa-caret-down"></i>
                         <% else %>
-                        <%= t.date_field(:date, class: "mobile-form-field", style: 'color: #616161; width: 100%; max-width: 180px; height: 54px') %><i style="color: #acacac; border-bottom: 1px solid #c4c4c4; padding-bottom: 19px;" class="fa fa-fw fa-caret-down"></i>
+                        <%= t.date_field(:date, class: "mobile-form-field", style: 'color: #616161; width: 100%; max-width: 180px; height: 54px') %><i style="color: #616161; border-bottom: 1px solid #c4c4c4; padding-bottom: 19px;" class="fa fa-fw fa-caret-down"></i>
                         <% end %>
                     </div>
 
@@ -66,7 +66,7 @@
                     <div class="fieldRowMobile">
                         <div class="desktopLabel">Fund</div>
                         
-                        <%= t.collection_select(:fund_id, Fund.where(:user_id => session[:user_id]), :id, :name, {:prompt=>"Select Fund"}, {:class=>'mobile-form-field', :style=>'color: #616161; width: 100%; max-width: 180px; height: 54px'})%><i style="color: #616161; border-bottom: 1px solid #c4c4c4; padding-bottom: 19px;" class="fa fa-fw fa-caret-down"></i>
+                        <%= t.collection_select(:fund_id, Fund.where(:user_id => session[:user_id]), :id, :name, {:prompt=>"Select Fund"}, {:class=>'mobile-form-field', :style=>'float: left; color: #616161; width: 100%; max-width: 180px; height: 54px'})%><i style="float: left; padding-top: 20px; color: #616161; border-bottom: 1px solid #c4c4c4; padding-bottom: 19px;" class="fa fa-fw fa-caret-down"></i>
                     </div>
 
                     <div class="fieldRowMobile">

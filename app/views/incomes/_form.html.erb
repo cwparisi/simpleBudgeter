@@ -37,50 +37,35 @@
                         </div>
                     <% end %>
 
-                    <div class="row formFieldRow">
-                        <div class="col-xs-3">
-                            <label for="income_name" class="fieldLabel">Name</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <%= i.text_field(:name, class: "form-control", style: "width:200px", placeholder: "Enter name") %>
-                        </div> 
+                    <div class="fieldRowMobile">
+                        <div class="desktopLabel">Name</div>
+                        
+                        <%= i.text_field(:name, class: "mobile-form-field", style: "width: 100%; max-width: 400px; height: 54px", placeholder: "Name of Income Source") %>
                     </div>
 
-                    <div class="row formFieldRow">
-                        <div class="col-xs-3">
-                            <label for="income_amount" class="fieldLabel">Amount</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <%= i.text_field(:amount, class: "form-control", style: 'width:200px', placeholder: "Enter amount") %>
-                        </div> 
+                    <div class="fieldRowMobile">
+                        <div class="desktopLabel">Amount</div>
+                        
+                        <%= i.text_field(:amount, class: "mobile-form-field", style: "width: 100%; max-width: 400px; height: 54px", placeholder: "Income Amount") %>
                     </div>
 
-                    <div class="row formFieldRow">
-                        <div class="col-xs-3">
-                            <label for="income_frquency" class="fieldLabel">Frequency</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <select class="form-control" style="width: 200px" name="income[frequency]" id="income_frequency" value="@income.frequency">
-                                    <option value="">Select frequency</option>
-                                <% @frequencies.each do |f| %>
-                                    <option value="<%=f%>"><%=f%></option>
-                                <% end %>
-                            </select>
-                        </div> 
+                    <div class="fieldRowMobile">
+                        <div class="desktopLabel">Frequency</div>
+                        
+                        <%= i.select(:frequency, @frequencies, {prompt: 'Select Frequency'}, class: "mobile-form-field", style: "float: left; width: 100%; max-width: 200px; height: 54px") %><i style="float: left; padding-top: 20px; color: #acacac; border-bottom: 1px solid #c4c4c4; padding-bottom: 19px;" class="fa fa-fw fa-caret-down"></i>
                     </div>
 
-                    <div class="row formFieldRow">
-                        <div class="col-xs-3">
-                            <label for="income_weekly_hours" class="fieldLabel">Hours per week</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <%= i.text_field(:weekly_hours, class: "form-control", style: 'width:200px', placeholder: "Enter hours") %>
-                        </div> 
-                    </div>                 
+                    <div class="fieldRowMobile">
+                        <div class="desktopLabel">Hours/Week</div>
+                        
+                        <%= i.text_field(:weekly_hours, class: "mobile-form-field", style: "width: 100%; max-width: 220px; height: 54px", placeholder: "Hours Per Week") %>
+                    </div>
 
                     <br>
                     <p style="font-size: 12px">*Amount should be a post-taxes value. </p>
-                  <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff" value="<%= action_name.capitalize%> income">
+                    <div class="submitBtn">
+                        <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff" value="<%= action_name.capitalize%> income">
+                    </div>
                 <% end %>
             </div> <!-- form-container -->
             </div> <!-- col-lg-12 -->
