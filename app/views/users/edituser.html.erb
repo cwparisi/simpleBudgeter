@@ -38,54 +38,36 @@
                         </div>
                     <% end %>
 
-                    <div class="row formFieldRow">
-                        <div class="col-xs-3">
-                            <label for="user_firstName" class="fieldLabel">First Name</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <%= u.text_field(:firstName, class: "form-control", style: "width:200px", placeholder: "Enter first name") %>
-                        </div> 
+                    <div class="fieldRowMobile">
+                        <div class="desktopLabel">First Name</div>
+                        <%= u.text_field(:firstName, class: "mobile-form-field", style: "width: 100%; max-width: 400px; height: 54px", placeholder: "Enter first name") %>
                     </div>
 
-                    <div class="row formFieldRow">
-                        <div class="col-xs-3">
-                            <label for="user_lastName" class="fieldLabel">Last Name</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <%= u.text_field(:lastName, class: "form-control", style: 'width:200px', placeholder: "Enter last name") %>
-                        </div> 
+                    <div class="fieldRowMobile">
+                        <div class="desktopLabel">Last Name</div>
+                        <%= u.text_field(:lastName, class: "mobile-form-field", style: "width: 100%; max-width: 400px; height: 54px", placeholder: "Enter first name") %>
                     </div>
 
-                    <div class="row formFieldRow">
-                        <div class="col-xs-3">
-                            <label for="user_userName" class="fieldLabel">User Name</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <%= u.text_field(:userName, class: "form-control", style: 'width:200px', placeholder: "Enter username") %>
-                        </div> 
+                    <div class="fieldRowMobile">
+                        <div class="desktopLabel">Username</div>
+                        <%= u.text_field(:userName, class: "mobile-form-field", style: 'width: 100%; max-width: 400px; height: 54px', placeholder: "Enter username") %>
                     </div>
 
-                    <div class="row formFieldRow">
-                        <div class="col-xs-3">
-                            <label for="user_password" class="fieldLabel">Password</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <%= u.password_field(:password, class: "form-control", style: 'width:200px', placeholder: "Enter new password") %>
-                        </div> 
+                    <div class="fieldRowMobile">
+                        <div class="desktopLabel">Password</div>
+                        <%= u.password_field(:password, class: "mobile-form-field", style: 'width: 100%; max-width: 400px; height: 54px', placeholder: "Enter new password") %>
                     </div>
 
-                    <div class="row formFieldRow">
-                        <div class="col-xs-3">
-                            <label for="user_password" class="fieldLabel">Password Confirmation</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <%= u.password_field(:password_confirmation, class: "form-control", style: 'width:200px', placeholder: "Re-enter new password") %>
-                        </div> 
+                    <div class="fieldRowMobile">
+                        <div class="desktopLabel">Password</div>
+                        <%= u.password_field(:password_confirmation, class: "mobile-form-field", style: 'width: 100%; max-width: 400px; height: 54px', placeholder: "Re-enter new password") %>
                     </div>
 
                     <br>
-                 
-                  <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff" value="Submit Changes">
+                
+                    <div class="submitBtn">
+                        <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff" value="Submit Changes">
+                    </div>
                 <% end %>
             </div> <!-- form-container -->
             </div> <!-- col-lg-12 -->
