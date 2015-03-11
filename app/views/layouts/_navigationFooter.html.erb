@@ -1,39 +1,39 @@
 <div class="navFooter">
 	<a href="/overview/index"><div <% if params[:controller] == "overview" %> class="navFooterActive navFooterItem" <% end %> class="navFooterItem">
-		<i class="fa fa-fw fa-bar-chart navFooterIcon" style="font-size: 25px;"></i>
+		<p style="text-align: center"><i class="fa fa-fw fa-bar-chart navFooterIcon" style="font-size: 25px;"></i></p>
 	</div></a>
 	<a href="/funds/index"><div <% if params[:controller] == "funds" %> class="navFooterActive navFooterItem" <% end %> class="navFooterItem">
-		<i class="fa fa-fw fa-envelope navFooterIcon" style="font-size: 25px;"></i>
+		<p style="text-align: center"><i class="fa fa-fw fa-envelope navFooterIcon" style="font-size: 25px;"></i></p>
 	</div></a>
 	<a href="/transactions/index"><div <% if params[:controller] == "transactions" %> class="navFooterActive navFooterItem" <% end %> class="navFooterItem">
-		<i class="fa fa-fw fa-credit-card navFooterIcon" style="font-size: 25px;"></i>
+		<p style="text-align: center"><i class="fa fa-fw fa-credit-card navFooterIcon" style="font-size: 25px;"></i></p>
 	</div></a>
 	<a href="/incomes/index"><div <% if params[:controller] == "incomes" %> class="navFooterActive navFooterItem" <% end %> class="navFooterItem">
-		<i class="fa fa-fw fa-usd navFooterIcon" style="font-size: 25px;"></i>
+		<p style="text-align: center"><i class="fa fa-fw fa-usd navFooterIcon" style="font-size: 25px;"></i></p>
 	</div></a>
 
 	<% if params[:controller] == "overview"%> 
 		<a href="/transactions/new">
 			<div class="navFooterItem" style="background-color: #388E3C">
-				<i class="fa fa-fw fa-plus navFooterIcon" style="font-size: 25px;"></i>
+				<p style="text-align: center"><i class="fa fa-fw fa-plus navFooterIcon" style="font-size: 25px;"></i></p>
 			</div>
 		</a>
 	<% elsif params[:controller] == "funds" %>
 		<a href="/funds/new">
 			<div class="navFooterItem" style="background-color: #388E3C">
-				<i class="fa fa-fw fa-plus navFooterIcon" style="font-size: 25px;"></i>
+				<p style="text-align: center"><i class="fa fa-fw fa-plus navFooterIcon" style="font-size: 25px;"></i></p>
 			</div>
 		</a>
 	<% elsif params[:controller] == "transactions" %>
 		<a href="/transactions/new">
 			<div class="navFooterItem" style="background-color: #388E3C">
-				<i class="fa fa-fw fa-plus navFooterIcon" style="font-size: 25px;"></i>
+				<p style="text-align: center"><i class="fa fa-fw fa-plus navFooterIcon" style="font-size: 25px;"></i></p>
 			</div>
 		</a>
 	<% elsif params[:controller] == "incomes" %>
 		<a href="/incomes/new">
 			<div class="navFooterItem" style="background-color: #388E3C">
-				<i class="fa fa-fw fa-plus navFooterIcon" style="font-size: 25px;"></i>
+				<p style="text-align: center"><i class="fa fa-fw fa-plus navFooterIcon" style="font-size: 25px;"></i></p>
 			</div>
 		</a>
 	<% end %>

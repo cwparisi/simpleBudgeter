@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   get 'users/edit'
 
+  get 'users/edituser'
+
   get 'users/destroy'
 
   get 'transactions/index'

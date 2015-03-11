@@ -6,9 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="../../favicon.ico">
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-        <title>Dashboard Template for Bootstrap</title>
+        <title>Edit User</title>
 
     </head>
 
@@ -22,7 +21,7 @@
         <div class="container-fluid" style="margin-bottom: 70px">
           <div class="row">
             <div class="col-lg-12">
-                <h2 class="sub-header"><%=action_name.capitalize%> User</h2>
+                <h2 class="sub-header">Update Account</h2>
                     <div class="form-container" style="margin-left: 0px">
                    <%= form_for @user do |u| %>
                     <% if @user.errors.any? %>
@@ -71,7 +70,7 @@
                             <label for="user_password" class="fieldLabel">Password</label>
                         </div>
                         <div class="col-xs-9">
-                            <%= u.password_field(:password, class: "form-control", style: 'width:200px', placeholder: "Enter password") %>
+                            <%= u.password_field(:password, class: "form-control", style: 'width:200px', placeholder: "Enter new password") %>
                         </div> 
                     </div>
 
@@ -80,13 +79,13 @@
                             <label for="user_password" class="fieldLabel">Password Confirmation</label>
                         </div>
                         <div class="col-xs-9">
-                            <%= u.password_field(:password_confirmation, class: "form-control", style: 'width:200px', placeholder: "Re-enter password") %>
+                            <%= u.password_field(:password_confirmation, class: "form-control", style: 'width:200px', placeholder: "Re-enter new password") %>
                         </div> 
                     </div>
 
                     <br>
                  
-                  <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff" value="<%= action_name.capitalize%> User">
+                  <input type="submit" name="commit" class="btn btn-default" style="background-color: #388E3C; color: #fff" value="Submit Changes">
                 <% end %>
             </div> <!-- form-container -->
             </div> <!-- col-lg-12 -->
