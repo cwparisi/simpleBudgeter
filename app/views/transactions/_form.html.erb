@@ -68,7 +68,7 @@
                         <%= t.collection_select(:fund_id, Fund.where(:user_id => session[:user_id]), :id, :name, {:prompt=>"Select Fund"}, {:class=>'mobile-form-field', :style=>'float: left; color: #616161; width: 100%; max-width: 180px; height: 54px'})%><i style="float: left; padding-top: 20px; color: #616161; border-bottom: 1px solid #c4c4c4; padding-bottom: 19px;" class="fa fa-fw fa-caret-down"></i>
                     </div>
 
-                    <div class="fieldRowMobile">
+                    <div class="fieldRowMobile" style="margin-top: 54px">
                         <div class="desktopLabel">Description</div>
                         
                         <%= t.text_field(:description, class: "mobile-form-field", style: "width: 100%; max-width: 400px; height: 54px", placeholder: "Brief Info For Reference") %>
